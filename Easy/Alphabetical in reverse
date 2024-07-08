@@ -1,0 +1,12 @@
+public class ReverseAlphabeticalOrder {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the word:");
+        String input = scanner.nextLine();
+        char[] chars = input.toCharArray();
+        Arrays.sort(chars);
+        StringBuilder sortedWord = new StringBuilder(new String(chars)).reverse();
+        System.out.println("Alphabetical Order: " + sortedWord);
+        scanner.close();
+    }
+}
