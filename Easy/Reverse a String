@@ -1,0 +1,13 @@
+public class ReverseString {
+    public static void main(String[] args) {
+        String input = "TEMPLE";
+        char[] charArray = input.toCharArray();
+        int length = charArray.length;
+        char[] reversedArray = new char[length];
+        for (int i = 0; i < length; i++) {
+            reversedArray[i] = charArray[length - 1 - i];
+        }
+        String reversedString = new String(reversedArray);
+        System.out.println("Reverse String: " + reversedString);
+    }
+}
