@@ -1,0 +1,35 @@
+public class CompositeNumbers {
+    public static void main(String[] args) {
+        int[] numbers = {16, 18, 27, 16, 23, 21, 19};
+        int compositeCount = countCompositeNumbers(numbers);
+        System.out.println("Number of Composite Numbers = " + compositeCount);
+    }
+    public static int countCompositeNumbers(int[] numbers) {
+        int count = 0;
+
+        for (int num : numbers) {
+            if (isComposite(num)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+    public static boolean isComposite(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        if (num <= 3) {
+            return false;
+        }
+        if (num % 2 == 0 || num % 3 == 0) {
+            return true;
+        }
+        for (int i = 5; i * i <= num; i += 6) {
+            if (num % i == 0 || num % (i + 2) == 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
