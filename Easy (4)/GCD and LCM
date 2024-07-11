@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class LCMAndGCD {
+    public static int gcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return gcd(b, a % b);
+    }
+    public static int lcm(int a, int b) {
+        return (a * b) / gcd(a, b);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("N value = ");
+        int n = scanner.nextInt();
+        int[] numbers = new int[n];
+        for (int i = 0; i < n; i++) {
+            System.out.print("Number " + (i + 1) + " = ");
+            numbers[i] = scanner.nextInt();
+        }
+        int gcdValue = numbers[0];
+        int lcmValue = numbers[0];
+
+        for (int i = 1; i < n; i++) {
+            gcdValue = gcd(gcdValue, numbers[i]);
+            lcmValue = lcm(lcmValue, numbers[i]);
+        }
+        System.out.println("LCM = " + lcmValue);
+        System.out.println("GCD = " + gcdValue);
+    }
+}
