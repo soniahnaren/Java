@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the value of N: ");
+        int n = scanner.nextInt();
+        System.out.print("The first " + n + " odd numbers are: ");
+        for (int i = 1; i <= 2*n; i += 2) {
+            System.out.print(i + " ");
+        }
+        int nthOddAfterN = 2 * (n + n) - 1;
+        System.out.println("\nThe " + n + "th odd number after " + n + " odd numbers is: " + nthOddAfterN);
+        
+        scanner.close();
+    }
+}
