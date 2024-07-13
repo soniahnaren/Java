@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number: ");
+        int number = scanner.nextInt();
+        boolean result = isPowerOfThree(number);
+        if (result) {
+            System.out.println("Output: true");
+        } else {
+            System.out.println("Output: false");
+        }
+
+        scanner.close();
+    }
+    public static boolean isPowerOfThree(int n) {
+        if (n <= 0) {
+            return false;
+        }
+        while (n % 3 == 0) {
+            n /= 3;
+        }
+        return n == 1;
+    }
+}
