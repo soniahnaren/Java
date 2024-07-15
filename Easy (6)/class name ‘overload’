@@ -1,0 +1,25 @@
+public class Overload {
+    private int value1;
+    private int value2;
+    public void setValues(int value1) {
+        this.value1 = value1;
+        this.value2 = 0; 
+    }
+    public void setValues(int value1, int value2) {
+        this.value1 = value1;
+        this.value2 = value2;
+    }
+    public void displayValues() {
+        System.out.println("Value1: " + value1);
+        System.out.println("Value2: " + value2);
+    }
+    public static void main(String[] args) {
+        Overload overload = new Overload();
+        overload.setValues(5);
+        System.out.println("After setting one value:");
+        overload.displayValues();
+        overload.setValues(10, 20);
+        System.out.println("After setting two values:");
+        overload.displayValues();
+    }
+}
