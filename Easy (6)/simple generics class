@@ -1,0 +1,39 @@
+import java.util.Arrays;
+public class GenericSorter<T extends Comparable<T>> {
+    private T[] values;
+    public GenericSorter(T[] values) {
+        this.values = values;
+    }
+    public void sort() {
+        Arrays.sort(values);
+    }
+    public void display() {
+        for (T value : values) {
+            System.out.print(value + " ");
+        }
+        System.out.println();
+    }
+    public static void main(String[] args) {
+        Integer[] intValues = {3, 1, 4, 1, 5, 9, 2, 6, 5};
+        GenericSorter<Integer> intSorter = new GenericSorter<>(intValues);
+        System.out.println("Before sorting Integer values:");
+        intSorter.display();
+        intSorter.sort();
+        System.out.println("After sorting Integer values:");
+        intSorter.display();
+        String[] stringValues = {"apple", "orange", "banana", "grape"};
+        GenericSorter<String> stringSorter = new GenericSorter<>(stringValues);
+        System.out.println("Before sorting String values:");
+        stringSorter.display();
+        stringSorter.sort();
+        System.out.println("After sorting String values:");
+        stringSorter.display();
+        Double[] doubleValues = {3.14, 1.59, 2.65, 3.58, 9.79};
+        GenericSorter<Double> doubleSorter = new GenericSorter<>(doubleValues);
+        System.out.println("Before sorting Double values:");
+        doubleSorter.display();
+        doubleSorter.sort();
+        System.out.println("After sorting Double values:");
+        doubleSorter.display();
+    }
+}
