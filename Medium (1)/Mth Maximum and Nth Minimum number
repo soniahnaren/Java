@@ -1,0 +1,28 @@
+import java.util.Arrays;
+import java.util.Collections;
+
+public class FindMaxMin {
+    public static void main(String[] args) {
+        int[] array = {14, 16, 87, 36, 25, 89, 34};
+        int M = 1; // 1st maximum
+        int N = 3; // 3rd minimum
+
+        // Find the Mth maximum number
+        Integer[] maxArray = Arrays.stream(array).boxed().toArray(Integer[]::new);
+        Arrays.sort(maxArray, Collections.reverseOrder());
+        int MthMax = (M > 0 && M <= maxArray.length) ? maxArray[M - 1] : Integer.MIN_VALUE;
+
+        // Find the Nth minimum number
+        Arrays.sort(array);
+        int NthMin = (N > 0 && N <= array.length) ? array[N - 1] : Integer.MAX_VALUE;
+
+        // Calculate sum and difference
+        int sum = MthMax + NthMin;
+        int difference = MthMax - NthMin;
+
+        System.out.println(M + "th Maximum Number = " + MthMax);
+        System.out.println(N + "th Minimum Number = " + NthMin);
+        System.out.println("Sum = " + sum);
+        System.out.println("Difference = " + difference);
+    }
+}
