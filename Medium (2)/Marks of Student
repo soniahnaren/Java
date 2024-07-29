@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class StudentGradeCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the marks in Python: ");
+        double pythonMarks = scanner.nextDouble();
+        System.out.print("Enter the marks in C Programming: ");
+        double cProgrammingMarks = scanner.nextDouble();
+        System.out.print("Enter the marks in Mathematics: ");
+        double mathematicsMarks = scanner.nextDouble();
+        System.out.print("Enter the marks in Physics: ");
+        double physicsMarks = scanner.nextDouble();
+
+        if (isValidMarks(pythonMarks) && isValidMarks(cProgrammingMarks) && isValidMarks(mathematicsMarks) && isValidMarks(physicsMarks)) {
+            double total = pythonMarks + cProgrammingMarks + mathematicsMarks + physicsMarks;
+            double aggregate = total / 4;
+
+            System.out.println("Total = " + total);
+            System.out.println("Aggregate = " + aggregate);
+
+            if (aggregate > 75) {
+                System.out.println("DISTINCTION");
+            } else if (aggregate >= 60) {
+                System.out.println("FIRST DIVISION");
+            } else if (aggregate >= 50) {
+                System.out.println("SECOND DIVISION");
+            } else if (aggregate >= 40) {
+                System.out.println("THIRD DIVISION");
+            } else {
+                System.out.println("FAIL");
+            }
+        } else {
+            System.out.println("Invalid marks entered. Marks should be between 0 and 100.");
+        }
+
+        scanner.close();
+    }
+
+    public static boolean isValidMarks(double marks) {
+        return marks >= 0 && marks <= 100;
+    }
+}
