@@ -1,0 +1,65 @@
+class FibonacciGenerator implements Runnable {
+    private int count;
+
+    public FibonacciGenerator(int count) {
+        this.count = count;
+    }
+
+    @Override
+    public void run() {
+        if (count < 1) {
+            System.out.println("Invalid input. Number must be greater than 0.");
+            return;
+        }
+
+        long[] fibonacciSeries = new long[count];
+        if (count > 0) fibonacciSeries[0] = 0;
+        if (count > 1) fibonacciSeries[1] = 1;
+
+        for (int i = 2; i < count; i++) {
+            fibonacciSeries[i] = fibonacciSeries[i - 1] + fibonacciSeries[i - 2];
+        }
+
+        for (long num : fibonacciSeries) {
+            System.out.print(num + " ");
+        }
+    }
+
+    public static void main(String[] args) {
+        // Test with different inputs
+        testFibonacci(5);
+        testFibonacci(7);
+        testFibonacci(-10);
+        testFibonacci(0);
+        testFibonacci("EIGHT FIVE");
+        testFibonacci(12.65);
+    }
+
+    public static void testFibonacci(Object input) {
+        int count;
+
+        if (input instanceof Integer) {
+            count = (int) input;
+        } else if (input instanceof String) {
+            try {
+                count = Integer.parseInt((String) input);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input: " + input + ". Please provide an integer.");
+                return;
+            }
+        } else if (input instanceof Double) {
+            count = ((Double) input).intValue();
+        } else {
+            System.out.println("Invalid input type: " + input.getClass().getSimpleName());
+            return;
+        }
+
+        Thread fibonacciThread = new Thread(new FibonacciGenerator(count));
+        fibonacciThread.start();
+        try {
+            fibonacciThread.join();
+        } catch (InterruptedException e) {
+            System.out.println("Thread interrupted");
+        }
+    }
+}
