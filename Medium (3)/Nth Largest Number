@@ -1,0 +1,29 @@
+import java.util.Arrays;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class NthLargestNumber {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int[] numbers = {14, 67, 48, 23, 5, 62};
+        
+        System.out.print("Enter the value of N: ");
+        
+        try {
+            int n = scanner.nextInt();
+            
+            if (n <= 0) {
+                System.out.println("N should be a positive integer greater than 0.");
+            } else if (n > numbers.length) {
+                System.out.println("N is greater than the length of the array.");
+            } else {
+                Arrays.sort(numbers);
+                int nthLargest = numbers[numbers.length - n];
+                System.out.println(n + "th largest number: " + nthLargest);
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input! Please enter an integer.");
+        }
+    }
+}
