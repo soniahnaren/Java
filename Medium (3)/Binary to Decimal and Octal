@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class BinaryConverter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the binary number: ");
+        String binaryNumber = scanner.nextLine();
+      
+        if (isValidBinary(binaryNumber)) {
+            int decimalNumber = Integer.parseInt(binaryNumber, 2);
+           
+            String octalNumber = Integer.toOctalString(decimalNumber);
+            
+            System.out.println("Decimal Number: " + decimalNumber);
+            System.out.println("Octal Number: " + octalNumber);
+        } else {
+            System.out.println("Invalid binary number.");
+        }
+    }
+
+    public static boolean isValidBinary(String binaryNumber) {
+        for (char c : binaryNumber.toCharArray()) {
+            if (c != '0' && c != '1') {
+                return false;
+            }
+        }
+        return true;
+    }
+}
