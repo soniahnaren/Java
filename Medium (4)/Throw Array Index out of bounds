@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class ArraySum {
+
+    public static void main(String[] args) {
+        testArraySum("5", "1 2 3 4 5");
+        testArraySum("4", "10");
+        testArraySum("-10", "");
+        testArraySum("0", "");
+        testArraySum("EIGHT SEVEN", "");
+        testArraySum("12.68", "");
+    }
+
+    public static void testArraySum(String nStr, String numbersStr) {
+        try {
+            int n = Integer.parseInt(nStr);
+
+            if (n <= 0) {
+                System.out.println("Invalid input. N must be greater than 0.");
+                return;
+            }
+
+            String[] numberStrings = numbersStr.split(" ");
+            int[] numbers = new int[n];
+            for (int i = 0; i < n; i++) {
+                if (i < numberStrings.length) {
+                    numbers[i] = Integer.parseInt(numberStrings[i]);
+                } else {
+                    numbers[i] = 0;  // Default value if not enough numbers are provided
+                }
+            }
+
+            int sum = calculateSum(numbers, n);
+            System.out.println("Sum: " + sum);
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input: " + nStr + ". Please provide an integer for N.");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("ArrayIndexOutOfBoundsException caught: " + e.getMessage());
+        }
+    }
+
+    public static int calculateSum(int[] numbers, int n) {
+        int sum = 0;
+        for (int i = 0; i <= n; i++) {  // Intentionally using <= to cause ArrayIndexOutOfBoundsException
+            sum += numbers[i];
+        }
+        return sum;
+    }
+}
