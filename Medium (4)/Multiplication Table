@@ -1,0 +1,43 @@
+class MultiplicationTableThread extends Thread {
+    private int number;
+
+    public MultiplicationTableThread(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Thread started for number: " + number);
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(number + " X " + i + " = " + (number * i));
+        }
+        System.out.println("Thread completed for number: " + number);
+    }
+}
+
+public class MultiplicationTable {
+    public static void main(String[] args) {
+        try {
+            int number1 = 5;
+            int number2 = 10;
+
+            MultiplicationTableThread thread1 = new MultiplicationTableThread(number1);
+            MultiplicationTableThread thread2 = new MultiplicationTableThread(number2);
+
+            System.out.println("Starting thread for number: " + number1);
+            thread1.start();
+
+            System.out.println("Starting thread for number: " + number2);
+            thread2.start(); 
+
+            thread1.join();
+            thread2.join(); 
+
+            System.out.println("Both threads have finished execution.");
+        } catch (InterruptedException e) {
+            System.out.println("Thread interrupted.");
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid number format.");
+        }
+    }
+}
